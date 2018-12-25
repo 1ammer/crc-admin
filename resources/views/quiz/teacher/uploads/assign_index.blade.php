@@ -47,9 +47,9 @@
                                         <td>{{$lecture->name}}</td>
                                         <td> {{$lecture->title}}</td>
                                           <td> {{$lecture->last_date}}</td>
-                                 <td><a href="{{route('assignment.delete',$lecture->id)}}" class="btn btn-danger"><i
+                                 <td><a href="{{route('assignment.delete',$lecture->id)}}" style="display: none;"  class="btn btn-danger"><i
                                                     class="fa fa-trash"></i> Delete</a>
-                                 <a href="#" class="btn btn-primary"><i
+                                 <a href="{{asset($lecture->pathfile)}}" rel="noopener noreferrer" target="_blank"  class="btn btn-primary"><i
                                                     class="fa fa-eye"></i> View</a></td>
                                          
                                     </tr>

@@ -7,19 +7,19 @@ use App\User;
 use App\Degree;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
 
-        $users= User::all()->where('is_active',1);
+//        $users = User::all()->where('is_active', 1);
+        $users = User::all() ;
 
-        return view('quiz.admin.user.index',compact('users'));
+        return view('quiz.admin.user.index', compact('users'));
     }
 
     /**
@@ -27,12 +27,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         $date['roles'] = Role::all();
-         $date['degrees'] = Degree::all();
-        return view("quiz.admin.user.create",$date);
-
+        $date['degrees'] = Degree::all();
+        return view("quiz.admin.user.create", $date);
     }
 
     /**
@@ -41,9 +39,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        
+    public function store(Request $request) {
+
         $this->validate(request(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -53,7 +50,7 @@ class UserController extends Controller
             'RGNumber' => 'required',
             'mobile' => 'required',
             'role_id' => 'required',
-            'degree' => 'required',  
+            'degree' => 'required',
         ]);
 
         $user = new User();
@@ -66,13 +63,12 @@ class UserController extends Controller
         $user->mobile = $request->mobile;
         $user->RGNumber = $request->RGNumber;
         $user->degree = $request->degree;
-           
+
         $user->save();
         session()->flash('success', 'User Created Successfully');
 
         return redirect()->route('user.all');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -80,14 +76,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
 
         $date['user'] = User::findOrFail($id);
         $date['roles'] = Role::all();
         $date['degrees'] = Degree::all();
         return view('quiz.admin.user.edit', $date);
-
     }
 
     /**
@@ -97,28 +91,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $this->validate(request(), ['name'=>'required',
-//            'email'=>'required|email',
-            'role_id'=>'required',
-            'is_active'=>'required'
+    public function update(Request $request, $id) {
+        $this->validate(request(), ['name' => 'required',
+            'email'=>'required|email',
+            'role_id' => 'required',
+            'is_active' => 'required'
         ]);
 
         $user = User::findOrFail($id);
-        if(trim($request->password) != ''){
+        if (trim($request->password) != '') {
 
             $user->password = bcrypt($request->password);
         }
         $user->name = $request->name;
-//        $user->email = $request->email;
+        $user->email = $request->email;
         $user->role_id = $request->role_id;
         $user->address = $request->address;
         $user->gender = $request->gender;
         $user->mobile = $request->mobile;
-        $user->RGNumber = $request->RGNumber;
+//        $user->RGNumber = $request->RGNumber;
         $user->degree = $request->degree;
-        $user->is_active = (int)$request->is_active;
+        $user->is_active = (int) $request->is_active;
         $user->save();
 //        $user->update($input);
         session()->flash('success', 'User Updated Successfully');
@@ -131,13 +124,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
 
         $user = User::findOrFail($id);
-        $user->is_active =false;
+        $user->is_active = false;
         $user->save();
         session()->flash('success', 'User Deactivated Successfully');
         return redirect()->route('user.all');
     }
+
 }

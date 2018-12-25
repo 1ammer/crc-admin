@@ -31,7 +31,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label class="control-label " for="email">Email</label>
-                    <input class="form-control" id="email" name="email" value="{{$user->email}}" type="email" disabled/>
+                    <input class="form-control" id="email" name="email" value="{{$user->email}}" type="email" />
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <div class="col-lg-6">
                 <div class="form-group">
                     <label class="control-label " for="mobile">Mobile Number</label>
-                    <input class="form-control" id="mobile" name="mobile" type="text" value="{{$user->mobile}}"/>
+                    <input class="form-control" id="mobile" name="mobile" type="number" value="{{$user->mobile}}"/>
                 </div>
             </div>  </div>
             <div class="form-row">
@@ -59,7 +59,7 @@
             <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-label " for="RGNumber">Registration Number</label>
-                        <input class="form-control" id="RGNumber" name="RGNumber" required type="text"
+                        <input class="form-control" id="RGNumber" name="RGNumber" required type="text" disabled
                                placeholder="Please Enter Registration Number.." value="{{$user->RGNumber}}"/>
                     </div>
                 </div>

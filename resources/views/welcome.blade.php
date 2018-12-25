@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Quiz Mania </title>
+        <title>CRCTS </title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -64,14 +64,14 @@
             }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height"style="background-image:url({{  asset('/images/bg.jpg')}}) ;background-position:center;background-repeat: no-repeat">
+    <body style="background: url({{  asset('/images/back.jpg')}}) ;background-repeat: no-repeat;background-size: 100% 100%">
+        <div class="flex-center position-ref full-height"style="background-image:url({{  asset('/images/bg.png')}}) ;background-position:center;background-repeat: no-repeat">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" style="color: #dfe6e8; font-weight: 900;font-size: 20px; background-color: #31603c;">Login </a>
                     @endauth
                 </div>
             @endif

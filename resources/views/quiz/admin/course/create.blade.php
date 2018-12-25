@@ -22,16 +22,16 @@
             <div class="form-row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label " for="code">Course CODE</label>
+                        <label class="control-label " for="code">Course CODE<span style="color: red">*</span></label>
                         <input class="form-control" id="code" name="code" required type="text"
-                               placeholder="Please Enter CODE.."/>
+                               placeholder="Please Enter CODE.. "   required/>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="control-label " for="title">Title</label>
+                        <label class="control-label " for="title">Title<span style="color: red">*</span></label>
                         <input class="form-control" id="title" required name="title" type="text"
-                               placeholder="Please Enter title."/>
+                               placeholder="Please Enter title."   required />
                     </div>
                 </div>
             </div>
@@ -39,9 +39,9 @@
             <div class="form-row">
                 <div class="col-lg-6">
                     <div class="form-group"> <!-- Name field -->
-                        <label class="control-label " for="degree">Degree Title</label>
+                        <label class="control-label " for="degree">Degree Title<span style="color: red">*</span></label>
                         <select name="degree" id="degree" class="form-control" required>
-                            <option value="">Please Select Degree Title</option>
+                            <option value="">Please Select Degree Title. </option>
                             @foreach($degrees as $degree)
                                 <option value="{{$degree->id}}">{{$degree->name}}</option>
                             @endforeach

@@ -45,7 +45,10 @@ Route::group(['middleware' => 'admin'], function () {
         Route::get('/course/{id}/delete', 'CourseController@destroy')->name('course.delete');
         Route::get('/course/{id}/enrollmente', 'CourseController@enrollment')->name('course.enrollment');
         Route::post('/course/{id}/enrollmente', 'CourseController@enrollmentadd')->name('course.enrollment');
-    });
+                Route::get('/degree/create', 'CourseController@dcreate')->name('degree.create');
+                 Route::post('/degree/create', 'CourseController@dstore')->name('degree.create');
+
+        });
 });
 
 Route::group(['middleware' => 'teacher'], function () {
@@ -65,7 +68,21 @@ Route::group(['middleware' => 'teacher'], function () {
         Route::get('/book/create', 'LectureController@bookCreate')->name('book.create');
         Route::post('/book/create', 'LectureController@bookStore')->name('book.create');
         Route::get('/book/{id}/delete', 'LectureController@bookDestroy')->name('book.delete');
+  
+        
+        Route::get('/quiz/all', 'QuizController@index')->name('quiz.all');
+        Route::get('/quiz/create', 'QuizController@create')->name('quiz.create');
+               Route::post('/quiz/create', 'QuizController@store')->name('quiz.create');
+ Route::get('/quiz/{id}/add', 'QuizController@qAdd')->name('quiz.add');
+               Route::post('/quiz/{id}/add', 'QuizController@qstore')->name('quiz.add');
+               Route::post('/quiz/{id}/generate', 'QuizController@generate')->name('quiz.generate');
+                           Route::get('/quiz/{id}/generate', 'QuizController@getgenerate')->name('quiz.generate');
 
+               Route::any('/quiz/{id}/delete', 'QuizController@destroy')->name('quiz.delete');
+      
+          Route::get('/result/all', 'QuizController@tresult')->name('result.all');
+
+       
 
     });
 });
@@ -83,6 +100,13 @@ Route::group(['middleware' => 'student'], function () {
         Route::get('/lecture/{id}/download', 'LectureController@download')->name('lecture.download');
 
        
+        Route::get('/sasubmit/{id}', 'LectureController@assignment_submit')->name('sa.submit');
+   Route::post('/asubmit', 'LectureController@assignment_store')->name('sa.store');
+                       
+   Route::get('/quiz/all', 'QuizController@sQuizAll')->name('squiz.all');
 
+           Route::get('/quiz/{id}/start', 'QuizController@sQuizstart')->name('quiz.start');
+        Route::post('/quiz/submit', 'QuizController@quiz_submit')->name('quiz.submit');      
+          Route::get('/result/all', 'QuizController@result')->name('sresult.all');
     });
 });

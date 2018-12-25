@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand navbar-dark static-top"  style="background-color: #31603c"> 
 
     <a class="navbar-brand mr-1" href="">CRC | Admin Panel</a>
 

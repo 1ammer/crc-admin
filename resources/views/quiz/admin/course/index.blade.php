@@ -18,9 +18,9 @@
     <div class="card mb-12">
         <div class="card-header">
             <i class="fas fa-table"></i>
-            All Users
+            All Courses
             <span class="pull-right"><a href="{{route('course.create')}}" class="btn-success btn-sm"><i
-                        class="fa fa-plus"></i> Courses List</a></span>
+                        class="fa fa-plus"></i> Add Courses</a></span>
           </div>
 
         <div class="card-body">
@@ -34,8 +34,8 @@
                                 <th>Title</th>
                                 <th>Degree</th>
                                 <th>Edit</th>
-                                <th>Enrollment</th>
-                                <th>Delete</th>
+                                <th>Allotment</th>
+                            {{--    <th>Delete</th>--}}
                             </tr>
                             </thead>
 
@@ -49,9 +49,9 @@
                                         <td><a href="{{route('course.edit',$course->id)}}" class="btn btn-primary"><i
                                                     class="fa fa-edit"></i> Edit</a></td>
                                       <td><a href="{{route('course.enrollment',$course->id)}}" class="btn btn-primary"><i
-                                                    class="fa fa-edit"></i> Enrollment</a></td>
-                                                    <td><a href="{{route('course.delete',$course->id)}}" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i> Delete</a></td>
+                                                    class="fa fa-edit"></i> Allotment</a></td>
+                                                     {{--   <td><a href="{{route('course.delete',$course->id)}}" class="btn btn-danger"><i
+                                                    class="fa fa-trash"></i> Delete</a></td>--}}
                                          
                                     </tr>
                                 @endforeach

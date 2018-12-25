@@ -19,7 +19,7 @@
        
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('squiz.all')}}" >
             <i class="fas fa-fw fa-table"></i>
             <span>Quiz</span></a>
     </li>
@@ -27,6 +27,13 @@
          <a class="nav-link " href="{{route('sbook.all')}}" >
             <i class="fas fa-fw fa-table"></i>
             <span>BOOKS</span>
+        </a>
+    
+    </li>
+      <li class="nav-item dropdown">
+         <a class="nav-link " href="{{route('sresult.all')}}" >
+            <i class="fas fa-fw fa-table"></i>
+            <span>Result</span>
         </a>
     
     </li>

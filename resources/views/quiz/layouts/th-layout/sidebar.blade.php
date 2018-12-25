@@ -35,10 +35,19 @@
         </div>
        
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown22" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
             <i class="fas fa-fw fa-table"></i>
             <span>Quiz</span></a>
+           <div class="dropdown-menu" aria-labelledby="pagesDropdown22">
+            <h6 class="dropdown-header">Quiz Actions:</h6>
+            <a class="dropdown-item" href="{{route('quiz.create')}}"><i class="fa fa-table"></i> Create Quiz </a>
+            <a class="dropdown-item" href="{{route('quiz.all')}}"><i class="fa fa-table"></i> All Quiz</a>
+
+            <div class="dropdown-divider"></div>
+           
+        </div>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,4 +63,12 @@
            
         </div>
     </li>
+     <li class="nav-item dropdown">
+         <a class="nav-link " href="{{route('result.all')}}" >
+            <i class="fas fa-fw fa-table"></i>
+            <span>Result</span>
+        </a>
+    
+    </li>
 </ul>
+

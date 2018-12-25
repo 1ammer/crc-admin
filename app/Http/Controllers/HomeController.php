@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Enrollment;
-use App\Course; 
-class HomeController extends Controller
-{
+use App\Allotment;
+use App\Course;
+use DB;
+
+class HomeController extends Controller {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -23,8 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         if (Auth::user()->isAdmin()) {
             return redirect()->route('dashboard.admin');
         } elseif (Auth::user()->isTeacher()) {
@@ -35,29 +35,30 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function adminHome()
-    {
+    public function adminHome() {
 
         return view('quiz.admin.index');
     }
 
-    public function studentHome()
-    {  
-         
-        $date['Enrollment']=Enrollment::all()->where('user_id', Auth::user()->id);
-        foreach ($date['Enrollment'] as $Enrollment)
-             $date['courses'][]= Course::find( $Enrollment->course_id)   ; 
-                 
-        return view('quiz.student.index',$date);
+    public function studentHome() {
+        $date['courses'] = DB::table('allotments')
+                ->join('courses', 'courses.id', '=', 'allotments.course_id')
+                ->where('allotments.user_id', Auth::user()->id)
+                ->select('courses.*')
+                ->distinct()
+                ->get();
+
+        return view('quiz.student.index', $date);
     }
 
-    public function teacherHome()
-    {
- $date['Enrollment']=Enrollment::all()->where('user_id', Auth::user()->id);
-        foreach ($date['Enrollment'] as $Enrollment)
-             $date['courses'][]= Course::find( $Enrollment->course_id)   ; 
-                 
-        return view('quiz.teacher.index',$date);
-        
+    public function teacherHome() {
+        $date['courses'] = DB::table('allotments')
+                ->join('courses', 'courses.id', '=', 'allotments.course_id')
+                ->where('allotments.user_id', Auth::user()->id)
+                ->select('courses.*')
+                ->distinct()
+                ->get();
+        return view('quiz.teacher.index', $date);
     }
+
 }

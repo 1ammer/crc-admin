@@ -5,9 +5,20 @@
     </li>
    
     @endsection
-
+@section('scripts')
+    <script type="text/javascript">
+ 
+//        $(document).ready(function() {
+//            $('#content-wrapper').css("background-image",
+//            "url(http://localhost/CRC-Admin/public/images/bg.jpg)");  
+//             $('#content-wrapper').css("background-position","center"); 
+//                          $('#content-wrapper').css("background-repeat","no-repeat"); 
+//
+//         }); 
+    </script>
+@endsection
 @section('content')
 
-    Hi! Admin  You are logged in!
+    
 
 @endsection

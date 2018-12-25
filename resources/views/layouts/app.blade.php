@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Quiz Mania</title>
+    <title>CRCTS</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,17 +19,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #31603c;text-align: center;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                     Quiz Mania
+                <a class="navbar-brand" href="{{ url('/') }}" style=" color: #dfe6e8; font-weight: 900">
+                     Course Resource Center & Testing System
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -37,10 +33,10 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto"  style="background-color: #31603c;>
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li style="display: none" class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
 <!--                            <li class="nav-item">
@@ -72,7 +68,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="height:554px ;background-repeat: no-repeat;background-size: 100% 100%;background: url({{  asset('/images/back.jpg')}});">
             @yield('content')
         </main>
     </div>

@@ -38,25 +38,25 @@
                                 {{--<th>Created At</th>--}}
                                 {{--<th>Updated At</th>--}}
                                 <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Deativate</th>
                             </tr>
                             </thead>
-
+                            <?php $count = 1; ?>
                             <tbody>
                             @if($users)
                                 @foreach($users as $user)
                                     <tr class="{{$user->is_active==1 ?'success':'danger'}}">
-                                        <td>{{$user->id}}</td>
+                                        <td>{{$count++}}</td>
                                         <td> {{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->role->name}}</td>
-                                        <td>{{$user->is_active==1 ?'Active':'Not Active'}}</td>
+                                        <td>{{$user->is_active==1 ?'Active':'Inactive'}}</td>
                                         {{--<td>{{$user->created_at->diffForHumans()}}</td>--}}
                                         {{--<td>{{$user->updated_at->diffForHumans()}}</td>--}}
                                         <td><a href="{{route('user.edit',$user->id)}}" class="btn btn-primary"><i
                                                     class="fa fa-edit"></i> Edit</a></td>
-                                        <td><a href="{{route('user.delete',$user->id)}}" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i> Delete</a></td>
+                                        <td><a href="{{route('user.delete',$user->id)}}" disabled class="btn btn-danger"><i
+                                                    class="fa fa-user"></i> Deactivate</a></td>
                                         {{--  <td><a href="/user/{{$user->id}}/show" class="btn btn-success">View</a></td>--}}
                                     </tr>
                                 @endforeach

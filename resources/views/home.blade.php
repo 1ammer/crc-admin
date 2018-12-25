@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are In-Active, please contact with Admin. 
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quiz Mania</title>
+    <title>CRCTS</title>
 
     <!-- Bootstrap core CSS-->
     <link href="{{  asset('/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

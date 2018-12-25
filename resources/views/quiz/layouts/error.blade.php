@@ -10,3 +10,12 @@
         </ul>
     </div>
 @endif
+
+@if (\Session::has('error'))
+    <div class="alert alert-success fade in alert-dismissible" style="opacity: 5;">
+        <a href="#" class="close pull-right" data-dismiss="alert">×</a>
+        <i class="fa fa-check-circle"></i> <ul>
+            <li>{!! \Session::get('error') !!}</li>
+        </ul>
+    </div>
+@endif
