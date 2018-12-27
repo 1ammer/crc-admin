@@ -280,5 +280,59 @@ class LectureController extends Controller {
         session()->flash('success', 'Course Deleted Successfully');
         return redirect()->route('lecture.all');
     }
+     public function Assignmentshow($id) {
+        $date['assign_submit'] = DB::table('assign_submit')
+                ->join('assignments', 'assignments.id', '=', 'assign_submit.assignment_id')
+                ->join('courses', 'courses.id', '=', 'assignments.course_id')
+               ->join('users', 'users.id', '=', 'assign_submit.user_id')
+                ->where('assignment_id', $id)
+                ->select('assign_submit.*', 'courses.title as title', 'users.RGNumber as RGN', 'users.name as uname')
+                ->distinct()
+                ->get(); 
+        return view('quiz.teacher.uploads.assign_sub_index', $date);
+    }
+     public function Assignmentmarks($aid,$uid) {
+        $date['asign_id'] =$aid;
+                $date['user_id'] =$uid;
+       $date['users']  =  DB::table('users')
+                   ->where('id', $uid)
+                    ->select('*')
+                ->first(); 
+        return view('quiz.teacher.assign_marks', $date);
+    }
+    
+    
+    public function AssignmentMarksStore(Request $request) {
+ 
+        $this->validate(request(), [
+            'assignId' => 'required',
+            'userId' => 'required',
+            'amarks' => 'required',
+            'atotal' => 'required',
 
-}
+        ]);
+      try{
+        $Result = new \App\Result();
+        $Result->user_id = $request->userId;
+        $Result->ass_id = $request->assignId;
+        $Result->total = $request->atotal;
+        $Result->obtained = $request->amarks;
+        $Result->save();
+        
+      }catch(\Exception $e){
+         $date['asign_id'] = $request->assignId;
+         $date['user_id'] =$request->userId;
+         $date['users']  =  DB::table('users')
+                   ->where('id', $request->userId)
+                    ->select('*')
+                ->first(); 
+                session()->flash('error', 'Something went Wrong,please try again...');
+        return view('quiz.teacher.assign_marks', $date);
+
+        
+    }
+            session()->flash('success', 'Course Created Successfully');
+
+        return redirect()->route('course.all');
+    }
+} 

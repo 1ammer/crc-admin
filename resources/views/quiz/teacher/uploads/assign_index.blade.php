@@ -18,26 +18,25 @@
     <div class="card mb-12">
         <div class="card-header">
             <i class="fas fa-table"></i>
-            All Lectures
+            All Assignments
             <span class="pull-right"><a href="{{route('assignment.create')}}" class="btn-success btn-sm"><i
                         class="fa fa-plus"></i>Add Assignment</a></span>
           </div>
 
-        <div class="card-body">
-            <div class="panel panel-dark">
-                <div class="card-body">
-                    <div class="table-responsive">
+        <div class=" ">
+            <div class=" ">
+                <div class=" ">
+                    <div class=" ">
                         <table class="table table-hover table-striped table-dark" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                  <th>Id</th>
-                                <th>Lecture Name</th>
+                                <th>Assignment Name</th>
                                 <th>Course Title</th>
                                 <th>Last Date</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
-
                             <tbody>
                               <?php   $count=1; ?>
                             @if($assignments)
@@ -47,10 +46,14 @@
                                         <td>{{$lecture->name}}</td>
                                         <td> {{$lecture->title}}</td>
                                           <td> {{$lecture->last_date}}</td>
-                                 <td><a href="{{route('assignment.delete',$lecture->id)}}" style="display: none;"  class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i> Delete</a>
+                                 <td>
+<!--                                     <a href="{{route('assignment.delete',$lecture->id)}}" style="display: none;"  class="btn btn-danger"><i
+                                                    class="fa fa-trash"></i> Delete</a>-->
                                  <a href="{{asset($lecture->pathfile)}}" rel="noopener noreferrer" target="_blank"  class="btn btn-primary"><i
-                                                    class="fa fa-eye"></i> View</a></td>
+                                                    class="fa fa-eye"></i> View</a>
+                                  <a href="{{route('assignment.show',$lecture->id)}}"    class="btn btn-primary"><i
+                                                    class="fa fa-eye"></i> Show</a>
+                                 </td>
                                          
                                     </tr>
                                 @endforeach

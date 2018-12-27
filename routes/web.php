@@ -59,7 +59,12 @@ Route::group(['middleware' => 'teacher'], function () {
         Route::get('/lecture/create', 'LectureController@create')->name('lecture.create');
         Route::post('/lecture/create', 'LectureController@store')->name('lecture.create');
         Route::get('/lecture/{id}/delete', 'LectureController@destroy')->name('lecture.delete');
-        
+
+                Route::post('/assignment/marks', 'LectureController@AssignmentMarksStore')->name('assignment.smarks');
+
+              Route::get('/assignment/marks/{aid}/{uid}', 'LectureController@Assignmentmarks')->name('assignment.marks');
+
+                Route::get('/assignment/{id}/show', 'LectureController@Assignmentshow')->name('assignment.show');
         Route::get('/assignment/all', 'LectureController@AssignmentList')->name('assignment.all');
         Route::get('/assignment/create', 'LectureController@AssignmentCreate')->name('assignment.create');
         Route::post('/assignment/create', 'LectureController@AssignmentStore')->name('assignment.create');
